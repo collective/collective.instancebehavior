@@ -8,14 +8,14 @@ from zope.interface import (
     noLongerProvides,
 )
 from plone.behavior.interfaces import IBehavior
-from plone.dexterity.interfaces import IDexterityContent
 from plone.dexterity.behavior import DexterityBehaviorAssignable
+from .interfaces import IInstanceBehaviorAssignableContent
 
 
 ANNOTATION_KEY = 'collective.instancebehavior.instance_behaviors'
 
 
-@adapter(IDexterityContent)
+@adapter(IInstanceBehaviorAssignableContent)
 class DexterityInstanceBehaviorAssignable(DexterityBehaviorAssignable):
     """Support per instance specification of plone.behavior behaviors.
     """
