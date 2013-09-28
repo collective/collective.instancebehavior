@@ -33,6 +33,16 @@ class DexterityInstanceBehaviorAssignable(DexterityBehaviorAssignable):
                 yield behavior
 
 
+def instance_behaviors_of(obj):
+    """Return applied instance behavior names of object.
+
+    :param obj: The Dexterity content object to enable behaviors on.
+    :type obj: object
+    """
+    annotations = IAnnotations(obj)
+    return annotations.get(ANNOTATION_KEY, ())
+
+
 def enable_behaviors(obj, behaviors, ifaces):
     """Enable behaviors on an object.
 
