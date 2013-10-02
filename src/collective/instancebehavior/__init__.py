@@ -43,7 +43,7 @@ def instance_behaviors_of(obj):
     return annotations.get(ANNOTATION_KEY, ())
 
 
-def enable_behaviors(obj, behaviors, ifaces):
+def enable_behaviors(obj, behaviors, ifaces, reindex=True):
     """Enable behaviors on an object.
 
     :param obj: The Dexterity content object to enable behaviors on.
@@ -54,6 +54,8 @@ def enable_behaviors(obj, behaviors, ifaces):
     :param ifaces: Behavior marker interfaces belonging to the behaviors to be
                    enabled. This is a list of interface classes.
     :type ifaces: class
+    :param reindex: Flag whether to reindex object after modification
+    :type reindex: bool
 
     Use it like so:
 
@@ -69,10 +71,11 @@ def enable_behaviors(obj, behaviors, ifaces):
     for iface in ifaces:
         alsoProvides(obj, iface)
 
-    obj.reindexObject(idxs=('object_provides'))
+    if reindex:
+        obj.reindexObject(idxs=('object_provides'))
 
 
-def disable_behaviors(obj, behaviors, ifaces):
+def disable_behaviors(obj, behaviors, ifaces, reindex=True):
     """ Disable behaviors on an object.
 
     :param obj: The Dexterity content object to disable behaviors on.
@@ -83,6 +86,8 @@ def disable_behaviors(obj, behaviors, ifaces):
     :param ifaces: Behavior marker interfaces belonging to the behaviors to be
                    disabled. This is a list of interface classes.
     :type ifaces: class
+    :param reindex: Flag whether to reindex object after modification
+    :type reindex: bool
 
     Use it like so:
 
@@ -99,4 +104,5 @@ def disable_behaviors(obj, behaviors, ifaces):
     for iface in ifaces:
         noLongerProvides(obj, iface)
 
-    obj.reindexObject(idxs=('object_provides'))
+    if reindex:
+        obj.reindexObject(idxs=('object_provides'))
