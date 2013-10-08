@@ -3,8 +3,8 @@ Changelog
 =========
 
 
-0.1dev
-------
+0.1
+---
 
 - created ``collective.instancebehavior`` based on jcbrand's and thet's work
   [rnix]
