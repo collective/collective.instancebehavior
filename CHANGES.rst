@@ -6,6 +6,9 @@ Changelog
 0.1
 ---
 
+- convert behaviors in ``enable_behaviors`` to tuple before concat.
+  [rnix]
+
 - created ``collective.instancebehavior`` based on jcbrand's and thet's work
   [rnix]
 

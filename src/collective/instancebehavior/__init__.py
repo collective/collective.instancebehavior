@@ -50,7 +50,7 @@ def enable_behaviors(obj, behaviors, ifaces, reindex=True):
     :type obj: object
     :param behaviors: Behaviors to be enabled on the object. This is a list of
                       dotted names of behavior schema interfaces.
-    :type behaviors: list
+    :type behaviors: list or tuple
     :param ifaces: Behavior marker interfaces belonging to the behaviors to be
                    enabled. This is a list of interface classes.
     :type ifaces: class
@@ -65,7 +65,7 @@ def enable_behaviors(obj, behaviors, ifaces, reindex=True):
     """
     annotations = IAnnotations(obj)
     instance_behaviors = annotations.get(ANNOTATION_KEY, ())
-    instance_behaviors += behaviors
+    instance_behaviors += tuple(behaviors)
     annotations[ANNOTATION_KEY] = instance_behaviors
 
     for iface in ifaces:
@@ -82,7 +82,7 @@ def disable_behaviors(obj, behaviors, ifaces, reindex=True):
     :type obj: object
     :param behaviors: Behaviors to be disabled on the object. This is a list of
                       dotted names of behavior schema interfaces.
-    :type behaviors: list
+    :type behaviors: list or tuple
     :param ifaces: Behavior marker interfaces belonging to the behaviors to be
                    disabled. This is a list of interface classes.
     :type ifaces: class
