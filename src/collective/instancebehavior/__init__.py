@@ -26,7 +26,7 @@ class DexterityInstanceBehaviorAssignable(DexterityBehaviorAssignable):
         self.instance_behaviors = annotations.get(ANNOTATION_KEY, ())
 
     def enumerateBehaviors(self):
-        self.behaviors = self.fti.behaviors + self.instance_behaviors
+        self.behaviors = self.fti.behaviors + tuple(self.instance_behaviors)
         for name in self.behaviors:
             behavior = queryUtility(IBehavior, name=name)
             if behavior is not None:
