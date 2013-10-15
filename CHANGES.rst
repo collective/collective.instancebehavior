@@ -2,11 +2,11 @@
 Changelog
 =========
 
-
 0.1
 ---
 
-- convert behaviors in ``enable_behaviors`` to tuple before concat.
+- check whether instance behavior already in instance_behaviors before
+  adding.
   [rnix]
 
 - created ``collective.instancebehavior`` based on jcbrand's and thet's work

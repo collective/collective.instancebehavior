@@ -64,8 +64,10 @@ def enable_behaviors(obj, behaviors, ifaces, reindex=True):
     ...                       [IDXEvent,])
     """
     annotations = IAnnotations(obj)
-    instance_behaviors = annotations.get(ANNOTATION_KEY, ())
-    instance_behaviors += tuple(behaviors)
+    instance_behaviors = list(annotations.get(ANNOTATION_KEY, []))
+    for behavior in behaviors:
+        if not behavior in instance_behaviors:
+            instance_behaviors.append(behavior)
     annotations[ANNOTATION_KEY] = instance_behaviors
 
     for iface in ifaces:
