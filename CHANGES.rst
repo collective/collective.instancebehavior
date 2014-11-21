@@ -2,6 +2,14 @@
 Changelog
 =========
 
+0.3dev
+---
+
+- more explicit definition of instance behaviors in context,
+  needed for plone.dexterity >= 2.3.0
+  [agitator]
+
+
 0.2
 ---
 
