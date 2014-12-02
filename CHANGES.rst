@@ -2,11 +2,11 @@
 Changelog
 =========
 
-0.3dev
+0.3
 ---
 
-- more explicit definition of instance behaviors in context,
-  needed for plone.dexterity >= 2.3.0
+- Fix ``DexterityInstanceBehaviorAssignable.enumerateBehaviors`` in order to
+  work with plone.dexterity >= 2.3.0
   [agitator]
 
 
