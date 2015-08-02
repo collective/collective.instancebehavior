@@ -39,6 +39,8 @@ Depend your plone product on ``collective.instancebehavior``.
 Enable behaviors and interfaces
 -------------------------------
 
+Note: the targeted object must implement ``collective.instancebehavior.IInstanceBehaviorAssignableContent``.
+
 ::
 
     >>> from plone.app.event.dx.interfaces import IDXEvent
