@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import  unittest
 from collective.instancebehavior.tests import \
     InstanceBehavior_INTEGRATION_TESTING

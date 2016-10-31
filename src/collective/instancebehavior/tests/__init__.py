@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from zope.interface import alsoProvides
 from plone.app.testing import (
     IntegrationTesting,
