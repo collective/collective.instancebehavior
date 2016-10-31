@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from zope.annotation import IAnnotations
 from zope.component import (
     queryUtility,
