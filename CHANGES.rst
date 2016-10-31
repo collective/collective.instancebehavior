@@ -2,16 +2,10 @@
 Changelog
 =========
 
-0.3.post2 (unreleased)
+0.4 (unreleased)
 ----------------------
 
-- Nothing changed yet.
-
-
-0.3.post1 (2016-10-31)
-----------------------
-
-- Be more explicit on dependencies
+- Be more explicit on dependencies and other egg improvements
   [tomgross]
 
 0.3
