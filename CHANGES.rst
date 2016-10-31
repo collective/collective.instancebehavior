@@ -2,10 +2,11 @@
 Changelog
 =========
 
-0.3.post2 (unreleased)
+0.3.post2 (2016-10-31)
 ----------------------
 
-- Nothing changed yet.
+- Egg improvements
+  [tomgross]
 
 
 0.3.post1 (2016-10-31)
