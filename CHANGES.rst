@@ -2,8 +2,8 @@
 Changelog
 =========
 
-0.4 (unreleased)
-------------------
+0.3.post1 (2016-10-31)
+----------------------
 
 - Be more explicit on dependencies
   [tomgross]
