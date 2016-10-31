@@ -5,7 +5,7 @@ from setuptools import (
 )
 
 
-version = '0.3'
+version = '0.3.post2.dev0'
 shortdesc = "Enable behaviors per content type instance."
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'CHANGES.rst')).read()
@@ -33,12 +33,15 @@ setup(name='collective.instancebehavior',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'simplejson',
-          'Plone',
+          'plone.behavior',
           'plone.dexterity',
+          'zope.annotation',
+          'zope.component',
+          'zope.interface',
       ],
       extras_require={
           'test': [
+              'plone.app.event',
               'plone.app.testing',
           ]
       },
@@ -47,3 +50,4 @@ setup(name='collective.instancebehavior',
       target = plone
       """,
       )
+
