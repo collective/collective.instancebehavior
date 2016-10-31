@@ -33,12 +33,15 @@ setup(name='collective.instancebehavior',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'simplejson',
-          'Plone',
+          'plone.behavior',
           'plone.dexterity',
+          'zope.annotation',
+          'zope.component',
+          'zope.interface',
       ],
       extras_require={
           'test': [
+              'plone.app.event',
               'plone.app.testing',
           ]
       },
@@ -47,3 +50,4 @@ setup(name='collective.instancebehavior',
       target = plone
       """,
       )
+

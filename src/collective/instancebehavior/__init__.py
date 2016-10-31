@@ -9,7 +9,7 @@ from zope.interface import (
 )
 from plone.behavior.interfaces import IBehavior
 from plone.dexterity.behavior import DexterityBehaviorAssignable
-from .interfaces import IInstanceBehaviorAssignableContent
+from collective.instancebehavior.interfaces import IInstanceBehaviorAssignableContent
 
 
 ANNOTATION_KEY = 'collective.instancebehavior.instance_behaviors'
