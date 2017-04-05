@@ -5,7 +5,7 @@ from setuptools import (
 )
 
 
-version = '0.3.post3.dev0'
+version = '0.4.dev0'
 shortdesc = "Enable behaviors per content type instance."
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'CHANGES.rst')).read()
@@ -19,6 +19,7 @@ setup(name='collective.instancebehavior',
       classifiers=[
           'Environment :: Web Environment',
           "Framework :: Plone",
+          "Framework :: Plone :: 4.3",
           "Framework :: Plone :: 5.0",
           'License :: OSI Approved :: GNU General Public License (GPL)',
           'Operating System :: OS Independent',
