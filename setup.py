@@ -5,7 +5,7 @@ from setuptools import (
 )
 
 
-version = '0.3'
+version = '0.4.dev0'
 shortdesc = "Enable behaviors per content type instance."
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'CHANGES.rst')).read()
@@ -18,27 +18,36 @@ setup(name='collective.instancebehavior',
       long_description=longdesc,
       classifiers=[
           'Environment :: Web Environment',
+          "Framework :: Plone",
+          "Framework :: Plone :: 4.3",
+          "Framework :: Plone :: 5.0",
           'License :: OSI Approved :: GNU General Public License (GPL)',
           'Operating System :: OS Independent',
           'Programming Language :: Python',
+          'Programming Language :: Python :: 2.7',
           'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
       ],
       author='JC Brand, Johannes Raggam, Robert Niederreiter',
       author_email='',
+      keywords='Python Plone Dexterity Behavior Development',
       license='GNU General Public Licence',
       packages=find_packages('src'),
       package_dir={'': 'src'},
+      url='https://pypi.python.org/pypi/collective.instancebehavior',
       namespace_packages=['collective'],
       include_package_data=True,
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'simplejson',
-          'Plone',
+          'plone.behavior',
           'plone.dexterity',
+          'zope.annotation',
+          'zope.component',
+          'zope.interface',
       ],
       extras_require={
           'test': [
+              'plone.app.event',
               'plone.app.testing',
           ]
       },
@@ -47,3 +56,4 @@ setup(name='collective.instancebehavior',
       target = plone
       """,
       )
+
