@@ -2,8 +2,8 @@
 Changelog
 =========
 
-0.4 (unreleased)
-----------------------
+0.4
+---
 
 - Be more explicit on dependencies and other egg improvements
   [tomgross]
