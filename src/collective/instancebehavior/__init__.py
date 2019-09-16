@@ -12,6 +12,8 @@ from plone.behavior.interfaces import IBehavior
 from plone.dexterity.behavior import DexterityBehaviorAssignable
 from collective.instancebehavior.interfaces import IInstanceBehaviorAssignableContent
 
+import six
+
 
 ANNOTATION_KEY = 'collective.instancebehavior.instance_behaviors'
 
@@ -104,6 +106,8 @@ def disable_behaviors(obj, behaviors, ifaces, reindex=True):
     instance_behaviors = annotations.get(ANNOTATION_KEY, ())
     instance_behaviors = filter(lambda x: x not in behaviors,
                                 instance_behaviors)
+    if six.PY3:
+        instance_behaviors = list(instance_behaviors)
     annotations[ANNOTATION_KEY] = instance_behaviors
 
     for iface in ifaces:
