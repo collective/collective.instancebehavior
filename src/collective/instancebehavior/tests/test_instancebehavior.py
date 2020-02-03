@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
-import  unittest
-from collective.instancebehavior.tests import \
-    InstanceBehavior_INTEGRATION_TESTING
+from collective.instancebehavior.tests import (
+    InstanceBehavior_INTEGRATION_TESTING,
+)
+
+import unittest
 
 
 class TestInstanceBehavior(unittest.TestCase):
     layer = InstanceBehavior_INTEGRATION_TESTING
 
     def setUp(self):
-        self.portal = self.layer['portal']
-        self.request = self.layer['request']
+        self.portal = self.layer["portal"]
+        self.request = self.layer["request"]
 
     def test_foo(self):
-        self.assertEquals(1, 1)
+        self.assertEqual(1, 1)

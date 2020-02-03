@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
-from zope.annotation import IAnnotations
-from zope.component import (
-    queryUtility,
-    adapter,
-)
-from zope.interface import (
-    alsoProvides,
-    noLongerProvides,
+from collective.instancebehavior.interfaces import (
+    IInstanceBehaviorAssignableContent,
 )
 from plone.behavior.interfaces import IBehavior
 from plone.dexterity.behavior import DexterityBehaviorAssignable
-from collective.instancebehavior.interfaces import IInstanceBehaviorAssignableContent
+from plone.dexterity.schema import SchemaInvalidatedEvent
+from zope.annotation import IAnnotations
+from zope.component import adapter
+from zope.component import queryUtility
+from zope.event import notify
+from zope.interface import alsoProvides
+from zope.interface import noLongerProvides
 
 import six
 
 
-ANNOTATION_KEY = 'collective.instancebehavior.instance_behaviors'
+ANNOTATION_KEY = "collective.instancebehavior.instance_behaviors"
 
 
 @adapter(IInstanceBehaviorAssignableContent)
@@ -29,8 +29,9 @@ class DexterityInstanceBehaviorAssignable(DexterityBehaviorAssignable):
         self.instance_behaviors = annotations.get(ANNOTATION_KEY, ())
 
     def enumerateBehaviors(self):
-        for behavior in super(DexterityInstanceBehaviorAssignable,
-                              self).enumerateBehaviors():
+        for behavior in super(
+            DexterityInstanceBehaviorAssignable, self
+        ).enumerateBehaviors():
             yield behavior
         for name in tuple(self.instance_behaviors):
             behavior = queryUtility(IBehavior, name=name)
@@ -71,15 +72,18 @@ def enable_behaviors(obj, behaviors, ifaces, reindex=True):
     annotations = IAnnotations(obj)
     instance_behaviors = list(annotations.get(ANNOTATION_KEY, []))
     for behavior in behaviors:
-        if not behavior in instance_behaviors:
+        if behavior not in instance_behaviors:
             instance_behaviors.append(behavior)
     annotations[ANNOTATION_KEY] = instance_behaviors
 
     for iface in ifaces:
         alsoProvides(obj, iface)
 
+    # invalidate global schema cache
+    notify(SchemaInvalidatedEvent(portal_type=None))
+
     if reindex:
-        obj.reindexObject(idxs=('object_provides'))
+        obj.reindexObject(idxs=("object_provides"))
 
 
 def disable_behaviors(obj, behaviors, ifaces, reindex=True):
@@ -104,8 +108,7 @@ def disable_behaviors(obj, behaviors, ifaces, reindex=True):
     """
     annotations = IAnnotations(obj)
     instance_behaviors = annotations.get(ANNOTATION_KEY, ())
-    instance_behaviors = filter(lambda x: x not in behaviors,
-                                instance_behaviors)
+    instance_behaviors = filter(lambda x: x not in behaviors, instance_behaviors)
     if six.PY3:
         instance_behaviors = list(instance_behaviors)
     annotations[ANNOTATION_KEY] = instance_behaviors
@@ -113,5 +116,8 @@ def disable_behaviors(obj, behaviors, ifaces, reindex=True):
     for iface in ifaces:
         noLongerProvides(obj, iface)
 
+    # invalidate global schema cache
+    notify(SchemaInvalidatedEvent(portal_type=None))
+
     if reindex:
-        obj.reindexObject(idxs=('object_provides'))
+        obj.reindexObject(idxs=("object_provides"))

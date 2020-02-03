@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
-from zope.interface import alsoProvides
-from plone.app.testing import (
-    IntegrationTesting,
-    PLONE_FIXTURE,
-    PloneSandboxLayer,
-)
+from plone.app.testing import IntegrationTesting
+from plone.app.testing import PLONE_FIXTURE
+from plone.app.testing import PloneSandboxLayer
 
 
 class InstanceBehaviorLayer(PloneSandboxLayer):
@@ -12,8 +9,8 @@ class InstanceBehaviorLayer(PloneSandboxLayer):
 
     def setUpZope(self, app, configurationContext):
         import collective.instancebehavior
-        self.loadZCML(package=collective.instancebehavior,
-                      context=configurationContext)
+
+        self.loadZCML(package=collective.instancebehavior, context=configurationContext)
 
     def setUpPloneSite(self, portal):
         pass
@@ -24,5 +21,5 @@ class InstanceBehaviorLayer(PloneSandboxLayer):
 
 InstanceBehavior_FIXTURE = InstanceBehaviorLayer()
 InstanceBehavior_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(InstanceBehavior_FIXTURE,),
-    name="InstanceBehavior:Integration")
+    bases=(InstanceBehavior_FIXTURE,), name="InstanceBehavior:Integration"
+)

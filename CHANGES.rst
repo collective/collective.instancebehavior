@@ -5,7 +5,9 @@ Changelog
 0.5 (unreleased)
 ----------------
 
-- No changes yet.
+- Invalidate global schema cache [jensens]
+
+- Black code style, isort imports, overall housekeeping [jensens]
 
 
 0.4
