@@ -2,8 +2,8 @@
 Changelog
 =========
 
-0.5 (unreleased)
-----------------
+0.5
+---
 
 - Invalidate global schema cache [jensens]
 

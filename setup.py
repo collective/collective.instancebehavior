@@ -4,7 +4,7 @@ from setuptools import setup
 import os
 
 
-version = "0.5.dev0"
+version = "0.5"
 shortdesc = "Enable behaviors per content type instance."
 longdesc = open(os.path.join(os.path.dirname(__file__), "README.rst")).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), "CHANGES.rst")).read()
