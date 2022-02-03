@@ -51,6 +51,17 @@ Disable behaviors and interfaces
     ... )
 
 
+Caching
+-------
+
+In some cases (ex: tests), you may need to clear Dexterity assignable cache after enabling or disabling instance behaviors.
+
+::
+
+    >>> from plone.dexterity.content import ASSIGNABLE_CACHE_KEY
+    >>> delattr(request, ASSIGNABLE_CACHE_KEY)
+
+
 
 Ideas
 =====
