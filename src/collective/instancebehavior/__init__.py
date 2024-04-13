@@ -7,7 +7,9 @@ from zope.annotation import IAnnotations
 from zope.component import adapter
 from zope.component import queryUtility
 from zope.interface import alsoProvides
-from zope.interface import noLongerProvides
+from zope.interface import directlyProvidedBy
+from zope.interface import directlyProvides
+import transaction
 
 
 ANNOTATION_KEY = "collective.instancebehavior.instance_behaviors"
@@ -73,12 +75,13 @@ def enable_behaviors(obj, behaviors, ifaces, reindex=True):
             instance_behaviors.append(behavior)
     annotations[ANNOTATION_KEY] = instance_behaviors
 
-    for iface in ifaces:
-        alsoProvides(obj, iface)
+    alsoProvides(obj, ifaces)
+
+    obj._p_changed = True
+    transaction.commit()
 
     if reindex:
         obj.reindexObject(idxs=("object_provides"))
-    obj._p_changed = True
 
 
 def disable_behaviors(obj, behaviors, ifaces, reindex=True):
@@ -109,9 +112,13 @@ def disable_behaviors(obj, behaviors, ifaces, reindex=True):
     instance_behaviors = filter(lambda x: x not in behaviors, instance_behaviors)
     annotations[ANNOTATION_KEY] = list(instance_behaviors)
 
+    declarations = directlyProvidedBy(obj)
     for iface in ifaces:
-        noLongerProvides(obj, iface)
+        declarations -= iface
+    directlyProvides(obj, declarations)
+
+    obj._p_changed = True
+    transaction.commit()
 
     if reindex:
         obj.reindexObject(idxs=("object_provides"))
-    obj._p_changed = True
