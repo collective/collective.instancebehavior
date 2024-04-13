@@ -5,7 +5,13 @@ Changelog
 0.6 (unreleased)
 ----------------
 
-- No changes yet.
+- Drop Python 2 support.
+
+- Do not invalidate global schema cache any more.
+
+- Set _p_changed on object instances when enabling and disabling behaviors to
+  ensure timestamp gets changed, which is used in plone 6 to look up schema
+  from cache.
 
 
 0.5
