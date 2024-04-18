@@ -1,6 +1,5 @@
-
-Changelog
-=========
+Changes
+=======
 
 0.6 (unreleased)
 ----------------

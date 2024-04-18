@@ -1,8 +1,7 @@
-
 License
 =======
 
-Copyright (c) 2013, JC Brand, Johannes Raggam, Robert Niederreiter
+Copyright (c) 2013-2024, JC Brand, Johannes Raggam, Robert Niederreiter
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

@@ -1,14 +1,20 @@
 from setuptools import find_packages
 from setuptools import setup
-
 import os
+
+
+def read_file(name):
+    with open(os.path.join(os.path.dirname(__file__), name)) as f:
+        return f.read()
 
 
 version = "0.6.dev0"
 shortdesc = "Enable behaviors per content type instance."
-longdesc = open(os.path.join(os.path.dirname(__file__), "README.rst")).read()
-longdesc += open(os.path.join(os.path.dirname(__file__), "CHANGES.rst")).read()
-longdesc += open(os.path.join(os.path.dirname(__file__), "LICENSE.rst")).read()
+longdesc = '\n\n'.join([read_file(name) for name in [
+    'README.rst',
+    'CHANGES.rst',
+    'LICENSE.rst'
+]])
 
 
 setup(
@@ -19,16 +25,18 @@ setup(
     classifiers=[
         "Environment :: Web Environment",
         "Framework :: Plone",
-        "Framework :: Plone :: 4.3",
-        "Framework :: Plone :: 5.1",
-        "Framework :: Plone :: 5.2",
+        "Framework :: Plone :: 6.0",
+        "Framework :: Plone :: Addon",
+        "Framework :: Zope",
+        "Framework :: Zope :: 5",
         "License :: OSI Approved :: GNU General Public License (GPL)",
-        "Operating System :: OS Independent",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     author="JC Brand, Johannes Raggam, Robert Niederreiter",
     author_email="",
