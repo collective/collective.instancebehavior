@@ -1,5 +1,7 @@
 # Changes
 
+<!-- towncrier release notes start -->
+
 ## 0.6 (unreleased)
 
 - Drop Python 2 support.
