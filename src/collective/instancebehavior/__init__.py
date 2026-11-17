@@ -1,6 +1,4 @@
-from collective.instancebehavior.interfaces import (
-    IInstanceBehaviorAssignableContent,
-)
+from collective.instancebehavior.interfaces import IInstanceBehaviorAssignableContent
 from plone.behavior.interfaces import IBehavior
 from plone.dexterity.behavior import DexterityBehaviorAssignable
 from zope.annotation import IAnnotations
@@ -9,8 +7,8 @@ from zope.component import queryUtility
 from zope.interface import alsoProvides
 from zope.interface import directlyProvidedBy
 from zope.interface import directlyProvides
-import transaction
 
+import transaction
 
 ANNOTATION_KEY = "collective.instancebehavior.instance_behaviors"
 
@@ -20,14 +18,12 @@ class DexterityInstanceBehaviorAssignable(DexterityBehaviorAssignable):
     """Support per instance specification of plone.behavior behaviors."""
 
     def __init__(self, context):
-        super(DexterityInstanceBehaviorAssignable, self).__init__(context)
+        super().__init__(context)
         annotations = IAnnotations(context)
         self.instance_behaviors = annotations.get(ANNOTATION_KEY, ())
 
     def enumerateBehaviors(self):
-        for behavior in super(
-            DexterityInstanceBehaviorAssignable, self
-        ).enumerateBehaviors():
+        for behavior in super().enumerateBehaviors():
             yield behavior
         for name in tuple(self.instance_behaviors):
             behavior = queryUtility(IBehavior, name=name)
@@ -59,14 +55,14 @@ def enable_behaviors(obj, behaviors, ifaces, reindex=True):
     :param reindex: Flag whether to reindex object after modification
     :type reindex: bool
 
-    Use it like so:
+    Use it like so::
 
-    >>> from plone.app.event.dx.interfaces import IDXEvent
-    >>> enable_behaviors(
-    ...     obj,
-    ...     ['plone.app.event.dx.behaviors.IEventBasic'],
-    ...     [IDXEvent]
-    ... )
+        from plone.app.event.dx.interfaces import IDXEvent
+        enable_behaviors(
+            obj,
+            ["plone.app.event.dx.behaviors.IEventBasic"],
+            [IDXEvent],
+        )
     """
     annotations = IAnnotations(obj)
     instance_behaviors = list(annotations.get(ANNOTATION_KEY, []))
@@ -98,14 +94,14 @@ def disable_behaviors(obj, behaviors, ifaces, reindex=True):
     :param reindex: Flag whether to reindex object after modification
     :type reindex: bool
 
-    Use it like so:
+    Use it like so::
 
-    >>> from plone.app.event.dx.interfaces import IDXEvent
-    >>> disable_behaviors(
-    ...     obj,
-    ...     ['plone.app.event.dx.behaviors.IEventBasic'],
-    ...     [IDXEvent]
-    ... )
+        from plone.app.event.dx.interfaces import IDXEvent
+        disable_behaviors(
+            obj,
+            ["plone.app.event.dx.behaviors.IEventBasic"],
+            [IDXEvent],
+        )
     """
     annotations = IAnnotations(obj)
     instance_behaviors = annotations.get(ANNOTATION_KEY, ())

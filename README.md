@@ -12,7 +12,7 @@ We use annotations for this purpose.
 Additionally, we provide our own `IBehaviorAssignable` adapter that overrides the default one.
 It does not only look for an object's FTI registered annotations, but also look for the behaviors stored in the current instance's annotations.
 
-Also helper functions are implemented which can be used to dynamically assing behaviors and interfaces on dexterity content objects.
+Also helper functions are implemented which can be used to dynamically assign behaviors and interfaces on dexterity content objects.
 
 
 ## Installation
