@@ -11,9 +11,9 @@ def read_file(name):
 version = "0.6.dev0"
 shortdesc = "Enable behaviors per content type instance."
 longdesc = '\n\n'.join([read_file(name) for name in [
-    'README.rst',
-    'CHANGES.rst',
-    'LICENSE.rst'
+    'README.md',
+    'CONTRIBUTORS.md',
+    'CHANGES.md',
 ]])
 
 
@@ -22,6 +22,7 @@ setup(
     version=version,
     description=shortdesc,
     long_description=longdesc,
+    long_description_content_type="text/markdown",
     classifiers=[
         "Environment :: Web Environment",
         "Framework :: Plone",
