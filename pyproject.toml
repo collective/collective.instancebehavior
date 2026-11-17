@@ -4,6 +4,70 @@
 [build-system]
 requires = ["setuptools>=68.2,<83", "wheel"]
 
+# START-MARKER-MANUAL-CONFIG
+# Anything from here until END-MARKER-MANUAL-CONFIG
+# will be kept by plone.meta
+
+[project]
+name = "collective.instancebehavior"
+version = "0.6.dev0"
+description = "Enable behaviors per content type instance."
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Framework :: Plone",
+    "Framework :: Plone :: 6.1",
+    "Framework :: Plone :: 6.2",
+    "Framework :: Plone :: Addon",
+    "Framework :: Zope",
+    "Framework :: Zope :: 5",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+license = "GPL-2.0-only"
+dynamic = ["readme"]
+requires-python = ">=3.10"
+authors = [
+    {name = "JC Brand"},
+    {name = "Johannes Raggam"},
+    {name = "Robert Niederreiter"},
+]
+dependencies = [
+    "plone.behavior",
+    "plone.dexterity",
+    "transaction",
+    "zope.annotation",
+    "zope.component",
+    "zope.interface",
+]
+keywords = ["Python", "Plone", "Dexterity", "Behavior", "Development"]
+
+[project.entry-points."plone.autoinclude.plugin"]
+target = "plone"
+
+[project.optional-dependencies]
+test = [
+    "plone.app.testing",
+    "Products.CMFPlone",
+    "zope.testrunner",
+]
+
+[project.urls]
+PyPI = "https://pypi.org/project/collective.instancebehavior"
+Source = "https://github.com/collective/collective.instancebehavior"
+Issues = "https://github.com/collective/collective.instancebehavior/issues"
+Changelog = "https://github.com/collective/collective.instancebehavior/blob/master/CHANGES.md"
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md", "CONTRIBUTORS.md", "CHANGES.md"], content-type = "text/markdown"}
+# END-MARKER-MANUAL-CONFIG
+
 
 
 [tool.towncrier]
