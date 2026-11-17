@@ -36,7 +36,7 @@ requires-python = ">=3.10"
 authors = [
     {name = "JC Brand"},
     {name = "Johannes Raggam"},
-    {name = "Robert Niederreiter"},
+    {name = "Robert Niederreiter", email = "rnix@squarewave.at"},
 ]
 dependencies = [
     "plone.behavior",
@@ -67,8 +67,6 @@ Changelog = "https://github.com/collective/collective.instancebehavior/blob/mast
 [tool.setuptools.dynamic]
 readme = {file = ["README.md", "CONTRIBUTORS.md", "CHANGES.md"], content-type = "text/markdown"}
 # END-MARKER-MANUAL-CONFIG
-
-
 
 [tool.towncrier]
 directory = "news/"
