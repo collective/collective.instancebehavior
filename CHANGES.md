@@ -12,6 +12,24 @@
   ensure timestamp gets changed, which is used in plone 6 to look up schema
   from cache.
 
+- Breaking: replace the `pkg_resources` namespace of `collective` with a
+  PEP 420 native namespace. Support Plone 6.1 and 6.2 only, on Python 3.10
+  to 3.13. Use 0.5 for older Plone versions and Python 2.7.
+  [remdub]
+
+- Declare `transaction` as a dependency: the helpers import it.
+  [remdub]
+
+- Add tests for `enable_behaviors`, `disable_behaviors`,
+  `instance_behaviors_of` and the behavior assignable.
+  [remdub]
+
+- Configure the package with plone.meta 2.12.0 (test matrix on Plone 6.2.3
+  and 6.1), move its metadata to `pyproject.toml`, convert the documentation
+  to Markdown and run the development environment on Plone 6.2.3 with uv
+  instead of buildout.
+  [remdub]
+
 
 ## 0.5
 
