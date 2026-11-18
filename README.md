@@ -20,7 +20,8 @@ Also helper functions are implemented which can be used to dynamically assign be
 
 ## Compatibility
 
-Version 0.6 supports Plone 6.1 and 6.2, on Python 3.10 to 3.13.
+Version 0.6 supports Plone 6.1 on Python 3.10 to 3.13, and Plone 6.2 on
+Python 3.10 to 3.14.
 
 For older Plone versions and Python 2.7, use collective.instancebehavior 0.5.
 
