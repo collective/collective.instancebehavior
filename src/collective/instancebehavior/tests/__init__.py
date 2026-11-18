@@ -1,7 +1,12 @@
-# -*- coding: utf-8 -*-
-from plone.app.testing import IntegrationTesting
+from plone.app.testing import FunctionalTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
+from plone.dexterity.fti import DexterityFTI
+from zope.interface import Interface
+
+
+class ITestBehavior(Interface):
+    """Behavior the tests enable per instance (its own marker)."""
 
 
 class InstanceBehaviorLayer(PloneSandboxLayer):
@@ -9,17 +14,24 @@ class InstanceBehaviorLayer(PloneSandboxLayer):
 
     def setUpZope(self, app, configurationContext):
         import collective.instancebehavior
+        import collective.instancebehavior.tests
 
         self.loadZCML(package=collective.instancebehavior, context=configurationContext)
+        self.loadZCML(
+            "testing.zcml",
+            package=collective.instancebehavior.tests,
+            context=configurationContext,
+        )
 
     def setUpPloneSite(self, portal):
-        pass
-
-    def tearDownZope(self, app):
-        pass
+        fti = DexterityFTI("TestItem")
+        fti.klass = "plone.dexterity.content.Item"
+        portal.portal_types._setObject("TestItem", fti)
 
 
 InstanceBehavior_FIXTURE = InstanceBehaviorLayer()
-InstanceBehavior_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(InstanceBehavior_FIXTURE,), name="InstanceBehavior:Integration"
+# enable_behaviors and disable_behaviors commit the transaction: each test
+# needs its own database.
+InstanceBehavior_FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(InstanceBehavior_FIXTURE,), name="InstanceBehavior:Functional"
 )
